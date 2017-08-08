@@ -11,6 +11,8 @@ db_host=172.18.0.68
 
 nohup iostat -m ${INTERVAL} > iostat.data &
 
+iostat_pid=$!
+
 mysql -u$db_user -p${db_pass}  -h$db_host -e "show global variables" > mysql-variables
 
 while test -e $RUNFILE; do 
@@ -29,4 +31,7 @@ while test -e $RUNFILE; do
 	echo "$ts $loadavg" >> $PREFIX-${file}-processlist
         mysql -u$db_user -p$db_pass -h$db_host -e "SHOW FULL PROCESSLIST\G" >> $PREFIX-${file}-processlist
 done
+
+kill -9 $iostat_pid
+
 echo Exiting because $RUNFILE does not exit.
