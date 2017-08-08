@@ -11,7 +11,7 @@ capture.sh program captures system load, mysql status, and iostat information wh
 awk_tps.sh and awk_qps.sh help to prepare plotting data for TPS and QPS. these 2 programs are used against mysql status data, like:
 
 ./awk_tps.sh 5-sec-status-2017-08-08-status > tps 
-./awk_qps.sh 5-sec-status-2017-08-08-status > qps 
+./awk_qps.sh 5-sec-status-2017-08-08-status > qps
 ./awk_cpu.sh iostat.data > cpu 
 
 You can also write other awk scripts to prepare plotting data for other metrics.
