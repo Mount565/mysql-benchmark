@@ -11,10 +11,9 @@ if [[ $c>0 ]];then
   exit;
 
 fi
+touch $RUNFILE
 
 nohup ./capture.sh &
-
-touch $RUNFILE
 
 ${sysbench_cmd} $@
 
